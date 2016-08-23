@@ -1,5 +1,6 @@
 ---
 - hosts: webservers
   roles:
-    - role: WebLogicServer
+    # there is no installer of WLS, so until you download the file, do not enable the role
+#    - role: WebLogicServer
 
