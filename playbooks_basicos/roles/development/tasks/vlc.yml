@@ -1,0 +1,4 @@
+---
+- name: install vlc
+  apt:  name=vlc state=absent
+  become: true

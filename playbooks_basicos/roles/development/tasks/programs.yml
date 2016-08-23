@@ -1,0 +1,42 @@
+---
+- name: install tree
+<<<<<<< HEAD
+<<<<<<< HEAD
+  apt: name=tree state=latest
+  become: true
+
+- name: install htop
+  apt: name=htop  state=latest
+=======
+=======
+>>>>>>> d6d906761cdd55b482963b95c05e9565527efad3
+  apt: name=tree state=present
+  become: true
+
+- name: install htop
+  apt: name=htop  state=present
+<<<<<<< HEAD
+>>>>>>> d6d906761cdd55b482963b95c05e9565527efad3
+=======
+>>>>>>> d6d906761cdd55b482963b95c05e9565527efad3
+  become: true
+
+- name: copy file to machine
+  copy: src=sublime-text_build-3114_amd64.deb dest=~/Downloads/ mode=0664
+  become: true
+
+- name: executing installer
+  apt: deb=~/Downloads/sublime-text_build-3114_amd64.deb
+  become: true
+
+- name: install openjdk-7-jdk
+<<<<<<< HEAD
+<<<<<<< HEAD
+  apt: name=openjdk-7-jdk state=latest
+=======
+  apt: name=openjdk-7-jdk state=present
+>>>>>>> d6d906761cdd55b482963b95c05e9565527efad3
+=======
+  apt: name=openjdk-7-jdk state=present
+>>>>>>> d6d906761cdd55b482963b95c05e9565527efad3
+  become: true

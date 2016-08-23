@@ -1,0 +1,8 @@
+---
+- name: install java-7
+  apt: name=default-jre state=present
+  become: true
+
+- name: install java-7 jdk
+  apt: name=default-jdk state=present
+  become: true
