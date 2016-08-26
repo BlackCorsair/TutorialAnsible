@@ -1,0 +1,10 @@
+---
+# Creador: Jorge Hevia
+# Proposito: servir de ejemplo para futuros estudiantes del curso de ansible en GFI informatica
+# Lo que hace: anade los repositorios necesarios en el caso de que no se puedan utilizar los archivos de "files"
+
+  - name: Adquisicion del repositorio oficial (eliminar en caso de no funcionar) # le damos un nombre descriptivo a la tarea que vamos a realizar
+    apt_repository: repo='ppa=ansible/ansible'                                   # mediante el modulo 'apt_repository' anadimos el repositorio oficial ( http://docs.ansible.com/ansible/apt_repository_module.html )
+
+  - name: Adquisicion del repositorio para sublime text 3 
+    apt_repository: repo='ppa:webupd8team/sublime-text-3'

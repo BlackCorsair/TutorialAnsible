@@ -1,0 +1,6 @@
+---
+# Creador: Jorge Hevia
+# Proposito: servir de ejemplo para futuros estudiantes del curso de ansible en GFI informatica
+# Lo que hace: instalamos ansible (o lo actualizamos)
+  - name: Instalacion de ansible    
+    apt: name=ansible state=latest
