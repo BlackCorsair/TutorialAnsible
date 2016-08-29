@@ -8,4 +8,4 @@
   - include: requirements.yml
   - include: ansible-installation.yml
   - include: subl-installation-repo.yml
-#  - include: subl-installation-w-installer.yml # leer las notas del playbook
+  - include: subl-installation-w-installer.yml # leer las notas del playbook

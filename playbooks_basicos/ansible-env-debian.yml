@@ -9,3 +9,4 @@
   roles:          # declaramos los roles que queremos utilizar
     - role: ansible-enviroment-debian # incluimos el rol que vamos a utilizar con el nombre de la carpeta del rol.
                                       # si el rol no se encuentra en la misma carpeta que este playbook, ansible mirara si esta en /etc/ansible/roles
+  ignore_errors: yes
