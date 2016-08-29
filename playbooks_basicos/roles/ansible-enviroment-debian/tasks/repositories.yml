@@ -15,5 +15,5 @@
 
   - name: Instalacion de EPEL para adquirir el repo de Ansible (centos)
     yum: name=epel-release state=latest
-    when: ansible_os_family == "CentOs"
+    when: ansible_os_family == "RedHat"
     ignore_errors: yes

@@ -2,5 +2,10 @@
 # Creador: Jorge Hevia
 # Proposito: servir de ejemplo para futuros estudiantes del curso de ansible en GFI informatica
 # Lo que hace: instalamos ansible (o lo actualizamos)
-  - name: Instalacion de ansible    
+  - name: Instalacion de ansible (Debian)
     apt: name=ansible state=latest
+    when: ansible_os_family == "Debian"
+
+  - name: Instalacion de ansible (RedHat)
+    yum: name=ansible state=latest
+    when: ansible_os_family == "RedHat"

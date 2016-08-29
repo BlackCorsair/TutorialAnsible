@@ -19,12 +19,12 @@
 
   - name: Copiar a la maquina destino el tarball
     copy: src=sublime_text_3_build_3114_x64.tar.bz2 dest=/tmp/ mode=775
-    when: ansible_os_family == "CentOS"
+    when: ansible_os_family == "RedHat"
 
   - name: Descomprimir el archivo en /opt
     unarchive: src=/tmp/sublime_text_3_build_3114_x64.tar.bz2 dest=/opt/
-    when: ansible_os_family == "CentOS"
+    when: ansible_os_family == "RedHat"
 
   - name: Creacion del atajo para terminal
     file: src=/opt/sublime_text_3/sublime_text dest=/usr/bin/subl state=link
-    when: ansible_os_family == "CentOS"
+    when: ansible_os_family == "RedHat"

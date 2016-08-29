@@ -5,3 +5,4 @@
 #             se pueda utilizar.
   - name: Actualizacion de la cache de repositorios   # una vez anadido el repositorio, hacemos un "apt-get update" para actualizar la lista de repositorios
     apt: update_cache=yes                             # mediante el modulo apt actualizamos el repositorio ( http://docs.ansible.com/ansible/apt_module.html )
+    when: ansible_os_family == "Debian"
