@@ -1,0 +1,16 @@
+---
+  - name: installing java in Debian
+    apt: name=openjdk-8-jdk state=latest
+    when: ansible_os_family == "Debian"
+
+  - name: copying java-jdk installer for EL7
+    copy: src=/tmp/jdk-8u101-linux-x64.rpm  dest=/tmp/  mode=775
+    when: ansible_os_family == "RedHat"
+
+  - name: installing java in RedHat os
+    yum: src=/tmp/jdk-8u101-linux-x64.rpm
+    when: ansible_os_family == "RedHat"
+
+  - name: removing installer
+    file: path=/tmp/jdk-8u101-linux-x64.rpm state=absent
+    when: ansible_os_family == "Redhat"
