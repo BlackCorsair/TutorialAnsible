@@ -1,0 +1,3 @@
+---
+  - name: exec the set-java-home script on the node
+    script: set-java-home.sh
