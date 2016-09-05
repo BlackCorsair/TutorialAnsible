@@ -7,5 +7,5 @@
   - include: update_cache.yml
   - include: requirements.yml
   - include: ansible-installation.yml
-  - include: subl-installation-repo.yml
-  - include: subl-installation-w-installer.yml 
+# ya no es necesario gracias al bloque creado en subl-installation-w-installer  - include: subl-installation-repo.yml
+  - include: subl-installation-w-installer.yml

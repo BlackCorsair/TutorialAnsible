@@ -14,15 +14,3 @@
       - python-netaddr-docs
       - software-properties-common
     when: ansible_os_family == "Debian"
-
-  - name: Instalacion de requisitos                   # instalamos todos los programas que podrian ser necesarior o recomendados para ansible 2.1.1.0
-    yum: name={{item}}  state=latest                  # le damos el nombre del paquete y su estado, en este caso queremos que si esta instalado se actualice y si no, que se instale
-    with_items:                                       # utilizamos una lista con todos los paquetes necesarios
-      - sshpass
-      - python-crypto-dbg
-      - python-crypto-doc
-      - python-jinja2-doc
-      - ipython
-      - python-netaddr-docs
-      - software-properties-common
-    when: ansible_os_family == "RedHat"

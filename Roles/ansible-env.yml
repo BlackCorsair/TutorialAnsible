@@ -7,6 +7,6 @@
 - hosts: virtual  # declaramos los hosts a los que vamos a aplicar las tareas
   become: true    # utilizamos become para tener permisos de administrador de forma global (para todas las tareas de este playbook)
   roles:          # declaramos los roles que queremos utilizar
-    - role: ansible-enviroment-debian # incluimos el rol que vamos a utilizar con el nombre de la carpeta del rol.
+    - role: ansible-enviroment # incluimos el rol que vamos a utilizar con el nombre de la carpeta del rol.
                                       # si el rol no se encuentra en la misma carpeta que este playbook, ansible mirara si esta en /etc/ansible/roles
   ignore_errors: yes
