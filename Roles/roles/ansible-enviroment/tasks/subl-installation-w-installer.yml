@@ -32,7 +32,7 @@
       when: (ansible_os_family == "RedHat") or (ansible_os_family == "Fedora")
 
     - name: Descomprimir el archivo en /opt
-      unarchive: src=/tmp/sublime_text_3_build_3114_x64.tar.bz2 dest=/opt/ copy=no mode=775
+      unarchive: src=/tmp/sublime_text_3_build_3114_x64.tar.bz2 dest=/opt/ copy=no mode=775 # IMPORTANTE: UTILIZAR COPY=NO PORQUE SI NO, NO LO PILLA
       when: (ansible_os_family == "RedHat") or (ansible_os_family == "Fedora")
 
     - name: Creacion del atajo para terminal
