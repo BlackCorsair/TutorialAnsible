@@ -3,9 +3,9 @@
 # Proposito: servir de ejemplo para futuros estudiantes del curso de ansible en GFI informatica
 # Lo que hace: llama a los playbooks con las tareas que se requieren para la instalacion del entorno de
 #              aprendizaje, estos playbooks deben encontrarse en la carpeta "tasks".
-  - include: repositories.yml
-  - include: update_cache.yml
-  - include: requirements.yml
-  - include: ansible-installation.yml
+#  - include: repositories.yml
+#  - include: update_cache.yml
+#  - include: requirements.yml
+#  - include: ansible-installation.yml
 # ya no es necesario gracias al bloque creado en subl-installation-w-installer  - include: subl-installation-repo.yml
   - include: subl-installation-w-installer.yml

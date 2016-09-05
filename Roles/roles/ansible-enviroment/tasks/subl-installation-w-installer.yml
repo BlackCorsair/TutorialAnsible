@@ -32,7 +32,7 @@
       when: (ansible_os_family == "RedHat") or (ansible_os_family == "Fedora")
 
     - name: Descomprimir el archivo en /opt
-      unarchive: src=/tmp/sublime_text_3_build_3114_x64.tar.bz2 dest=/opt/
+      unarchive: src=/tmp/sublime_text_3_build_3114_x64.tar.bz2 dest=/opt/ copy=no mode=775
       when: (ansible_os_family == "RedHat") or (ansible_os_family == "Fedora")
 
     - name: Creacion del atajo para terminal
@@ -40,5 +40,5 @@
       when: (ansible_os_family == "RedHat") or (ansible_os_family == "Fedora")
 
     - name: Eliminacion del archivo de instalacion
-      file: src=/opt/sublime_text_3/sublime_text dest=/usr/bin/subl state=absent
+      file: path=/tmp/sublime_text_3_build_3114_x64.tar.bz2 state=absent
       when: (ansible_os_family == "RedHat") or (ansible_os_family == "Fedora")
