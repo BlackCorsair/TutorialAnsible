@@ -1,0 +1,23 @@
+---
+# Creador: Jorge Hevia
+# Proposito: servir de ejemplo para futuros estudiantes del curso de ansible en GFI informatica
+# Lo que hace: instala el jdk de oracle en la maquina linux destino, creando las variables de entorno necesarias.
+
+- hosts: virtual
+  become: true
+  ignore_errors: yes
+  tasks:
+    - name: download jdk from official download page
+      get_url:
+        url: http://download.oracle.com/otn-pub/java/jdk/8u101-b13/jdk-8u101-linux-x64.tar.gz
+        dest: /tmp/jdk-8u101-linux-x64.tar.gz
+        mode: 775
+
+    - name: descompress the archive in the correct directory
+      unarchive: src=/tmp/jdk-8u101-linux-x64.tar.gz dest=/opt/ copy=no mode=775 # IMPORTANTE: UTILIZAR COPY=NO PORQUE SI NO, NO LO PILLA
+
+    - name: Add JAVA_HOME environment variariables in bashrc
+      lineinfile: dest=~/.bashrc line='export JAVA_HOME=/opt/jdk-8u101-linux-x64'
+
+    - name: Add Java bin folder to path in bashrc
+      lineinfile: dest=~/.bashrc line='export PATH=$PATH:$JAVA_HOME/bin'
