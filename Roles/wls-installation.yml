@@ -1,6 +1,0 @@
----
-- hosts: virtual
-  become: true
-  ignore_errors: yes
-  roles:
-    - role: wls-installation

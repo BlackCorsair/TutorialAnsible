@@ -1,8 +1,0 @@
----
-- name: copy vagrant installer
-  copy: src=vagrant_1.8.5_x86_64.deb dest=~/Downloads/ mode=0664
-  become: true
-
-- name: execute vagrant installer 
-  apt: deb=~/Downloads/vagrant_1.8.5_x86_64.deb
-  become: true

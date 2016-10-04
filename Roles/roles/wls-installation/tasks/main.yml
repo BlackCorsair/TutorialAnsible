@@ -1,3 +1,0 @@
----
-  - include: java-installation.yml
-  - include: set-java_home.yml

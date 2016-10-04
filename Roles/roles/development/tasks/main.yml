@@ -1,7 +1,0 @@
----
-  - include: programs.yml
-  - include: update_cache.yml
-# there's no vagrant installer, so until you download it from the web
-# do not enable the below line
-#  - include: vagrant.yml
-  - include: vlc.yml
