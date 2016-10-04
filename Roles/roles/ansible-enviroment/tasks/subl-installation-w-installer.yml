@@ -1,0 +1,44 @@
+---
+# Creador: Jorge Hevia
+# Proposito: servir de ejemplo para futuros estudiantes del curso de ansible en GFI informatica
+# Lo que hace: instalamos sublimetext para poder editar mas facilmente los playbook, esta vez lo hacemos proporcionando nosotros el instalador
+# NOTA: EL ELEMENTO EN FILES ES UN SEÑUELO PARA MOSTRAR LA ESTRUCTURA DEL ROL, NO ES UN INSTALADOR REAL
+  - block:
+    - name: Copiar a la maquina destino el instalador
+      copy: src=sublime-text_build-3114_amd64.deb dest=/tmp/ mode=775  # copiamos el instalador que se encuentra en /ansible-enviroment-debian/files a /tmp
+      when: ansible_os_family == "Debian"
+
+    - name: Instalacion de sublime
+      apt: deb=/tmp/sublime-text_build-3114_amd64.deb
+      when: ansible_os_family == "Debian"
+
+    - name: Eliminacion del instalador
+      file: path=/tmp/sublime-text_build-3114_amd64.deb state=absent    # mediante el modulo "file" y el estado "absent" eliminamos el instalador...se podria decir que...lo hemos ausentado xDDD(matadme plis)
+      when: ansible_os_family == "Debian"
+
+  - rescue:
+    - name: Adquisicion del repositorio para sublime text 3 (debian)
+      apt_repository: repo='ppa:webupd8team/sublime-text-3'
+      when: ansible_os_family == "Debian"
+
+    - name: Instalacion de sublime
+      apt: name=sublime-text-installer state=latest
+      when: ansible_os_family == "Debian"
+
+    # INTALACION EN SISTEMAS CENTOS
+  - always:
+    - name: Copiar a la maquina destino el tarball
+      copy: src=sublime_text_3_build_3114_x64.tar.bz2 dest=/tmp/ mode=775
+      when: (ansible_os_family == "RedHat") or (ansible_os_family == "Fedora")
+
+    - name: Descomprimir el archivo en /opt
+      unarchive: src=/tmp/sublime_text_3_build_3114_x64.tar.bz2 dest=/opt/ copy=no mode=775 # IMPORTANTE: UTILIZAR COPY=NO PORQUE SI NO, NO LO PILLA
+      when: (ansible_os_family == "RedHat") or (ansible_os_family == "Fedora")
+
+    - name: Creacion del atajo para terminal
+      file: src=/opt/sublime_text_3/sublime_text dest=/usr/bin/subl state=link
+      when: (ansible_os_family == "RedHat") or (ansible_os_family == "Fedora")
+
+    - name: Eliminacion del archivo de instalacion
+      file: path=/tmp/sublime_text_3_build_3114_x64.tar.bz2 state=absent
+      when: (ansible_os_family == "RedHat") or (ansible_os_family == "Fedora")
