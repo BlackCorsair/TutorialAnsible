@@ -1,0 +1,37 @@
+---
+# author: jorge hevia
+# function: this playbook will install apache and all it's dependencies in the selected machines
+-  hosts: virtual
+   become: true
+   vars:
+    - download_folder: /tmp
+    - installation_folder: /opt
+    - installed_folder: /httpd-2.4.25
+    - command_line_folder: "{{ installation_folder }}{{ installed_folder }}"
+    - file_name: httpd-2.4.25.tar.bz2
+    - download_url: http://apache.rediris.es//httpd/httpd-2.4.25.tar.bz2
+   tasks:
+    - name: install the dependencies for apache whatever the OS package manager is (experimental)
+      package:
+        name:  "{{ item }}"
+        state: latest
+      with_items:
+        - libtool
+        - autoconf
+        - make
+    - name: Download the installation files in the selected folder
+      get_url:
+        url: "{{download_url}}"
+        dest: "{{download_folder}}"
+        mode: 664
+    - name: Extract the downloaded files
+      unarchive: 
+        src: "{{download_folder}}/{{ file_name }}"
+        dest: "{{installation_folder}}"
+        remote_src: true
+    - name: Configure apache
+      shell: "{{ command_line_folder }}/configure"
+    - name: compile the files
+      shell: "{{ command_line_folder }}/make"
+    - name: install apache
+      shell: "{{ command_line_folder }}/make install"
