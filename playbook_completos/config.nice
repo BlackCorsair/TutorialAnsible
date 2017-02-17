@@ -1,7 +1,0 @@
-#! /bin/sh
-#
-# Created by configure
-
-"/opt/httpd-2.4.25/configure" \
-"--prefix=/opt/httpdd2" \
-"$@"
