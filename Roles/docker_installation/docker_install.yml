@@ -1,0 +1,15 @@
+---
+#
+# Author: Jorge Hevia
+# What does this role do: this role installs Docker Community Edition (CE) on ubuntu 16 (for now), 
+#                         it's done with repositories (cross fingers to work with proxies) 
+# Working Ansible version: 2.3.0.0
+
+- hosts: vagrant
+  become: true
+  # set the proxy for gfi
+  environment:
+    http_proxy: http://proxy.gfi.es:8000
+    https_proxy: http://proxy.gfi.es:8000
+  roles:
+      - role: docker_install 

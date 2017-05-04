@@ -1,0 +1,25 @@
+---
+# THIS NEEDS TO BE TESTED
+# this should work with or without proxy, it must be set on the docker_install.yml playbook to apply globally
+- name: Install yum-utils, which provides the yum-config-manager utility
+  yum: name={{item}} state=latest
+  with_items:
+    - yum-utils
+  when: ansible_pkg_mgr == "yum"
+
+- name: set up the stable repository
+  shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  when: ansible_pkg_mgr == "yum"
+
+- name: Update the yum package index
+  yum: update_cache=yes
+  when: ansible_pkg_mgr == "yum"
+
+- name: Install the latest version of Docker
+  yum: name=docker-ce state=latest
+  when: ansible_pkg_mgr == "yum"
+
+# install vim
+- name: Install vim to edit docker compose files
+  yum: name=vim state=latest
+  when: ansible_pkg_mgr == "yum"
